@@ -22,7 +22,7 @@ the script should produce the output:
 
 Cost of [('apples', 2.0), ('pears', 3.0), ('limes', 4.0)] is 12.25
 """
-from __future__ import print_function
+# from __future__ import print_function
 
 fruitPrices = {'apples': 2.00, 'oranges': 1.50, 'pears': 1.75,
                'limes': 0.75, 'strawberries': 1.00}
@@ -35,7 +35,12 @@ def buyLotsOfFruit(orderList):
     Returns cost of order
     """
     totalCost = 0.0
-    "*** YOUR CODE HERE ***"
+    for fruit, pounds in orderList:
+     if not fruitPrices.has_key(fruit):
+             print ('ERROR: invalid fruit.')
+             return None
+     totalCost += fruitPrices[fruit]*pounds
+
     return totalCost
 
 

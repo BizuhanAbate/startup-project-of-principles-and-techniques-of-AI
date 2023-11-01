@@ -20,8 +20,9 @@ Welcome to shop2 fruit shop
 For orders:  [('apples', 1.0), ('oranges', 3.0)] best shop is shop1
 For orders:  [('apples', 3.0)] best shop is shop2
 """
-from __future__ import print_function
+# from __future__ import print_function
 import shop
+import buyLotsOfFruit as m
 
 
 def shopSmart(orderList, fruitShops):
@@ -30,14 +31,17 @@ def shopSmart(orderList, fruitShops):
         fruitShops: List of FruitShops
     """
     bestShop = fruitShops[0]
-    bestPrice = bestShop.getPriceOfOrder(orderList)
+    # bestPrice = bestShop.getPriceOfOrder(orderList)
+    bestPrice = 100000000
     
-    for shop in fruitShops[1:]:
-        totalPrice = shop.getPriceOfFruit(orderList)
-        if totalPrice < bestPrice:
-            bestShop = shop
-            bestPrice = totalPrice
-
+    for shop in fruitShops:
+        # totalPrice = shop.getPriceOfFruit(orderList)
+         fruitPrices = shop.fruitPrices
+         totalPrice = m.buyLotsOfFruit(orderList, fruitPrices)
+         if totalPrice < bestPrice:
+             bestShop = shop
+             bestPrice = totalPrice
+ 
     return bestShop
 
 
